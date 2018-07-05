@@ -1,16 +1,8 @@
-const deepmerge = require('deepmerge')
 const fs = require('fs')
 const sharp = require('sharp')
 
 // apply default config to gallery config
-const galleryConfigDefaults = {
-	name: 'gallery',
-	imagesFolder: 'images',
-	thumbsFolder: 'images/thumbs',
-	images: []
-}
-const galleryConfig = deepmerge(
-	galleryConfigDefaults,
+const galleryConfig = require('./galleryConfig.js')(
 	require('./testGallery.runwayconf.js')
 )
 var images = galleryConfig.images
