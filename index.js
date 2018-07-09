@@ -5,7 +5,6 @@ const sharp = require('sharp')
 const galleryConfig = require('./galleryConfig.js')(
 	require('./testGallery.runwayconf.js')
 )
-var images = galleryConfig.images
 
 // prepare thumbs folder
 try {
@@ -16,7 +15,7 @@ try {
 
 // read metadata from images
 var metadataPromises = []
-images.forEach(image => {
+galleryConfig.images.forEach(image => {
 	image.sourcePath = galleryConfig.imagesFolder + '/' + image.filename
 	image.thumbPath = galleryConfig.thumbsFolder + '/' + image.filename
 	metadataPromises.push(sharp(image.sourcePath).metadata())
@@ -24,7 +23,7 @@ images.forEach(image => {
 // resolve metadata promises
 Promise.all(metadataPromises).then(metadata => {
 	// copy image meta into images object
-	images.forEach((image, index) => {
+	galleryConfig.images.forEach((image, index) => {
 		// image.metadata = metadata[index]
 		image.metadata = {}
 		image.metadata.width = metadata[index].width
@@ -40,7 +39,7 @@ Promise.all(metadataPromises).then(metadata => {
 		width: 0,
 		images: []
 	}
-	images.forEach((image, index) => {
+	galleryConfig.images.forEach((image, index) => {
 		if (row.height === -1 || image.metadata.height < row.height) {
 			// scale the running row width total by the new image scale
 			row.width *= (image.metadata.height / row.height)
@@ -53,7 +52,7 @@ Promise.all(metadataPromises).then(metadata => {
 		var marginWidth = (row.images.length - 1) * galleryConfig.imageMargins.horiz
 		if (
 			row.width + marginWidth >= galleryConfig.width
-			&& images.length >= galleryConfig.imagesPerRow
+			&& galleryConfig.images.length >= galleryConfig.imagesPerRow
 		) {
 			gallery.rows.push(row)
 			row = {
