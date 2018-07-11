@@ -1,28 +1,27 @@
 var path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
 	entry: './src/index.jsx',
 	output: {
 		path: path.resolve(__dirname, 'build'),
-		filename: 'index.js',
-		libraryTarget: 'commonjs2'
+		filename: '[name].bundle.js'
 	},
 	module: {
 		rules: [
 			{
-				test: /\.jsx$/,
+				test: /\.jsx?/,
 				include: path.resolve(__dirname, 'src'),
-				exclude: /(node_modules|build)/,
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['env']
+						presets: ['react']
 					}
 				}
 			}
 		]
 	},
-	externals: {
-		'react': 'commonjs react'
-	}
+	plugins: [
+		new CopyWebpackPlugin([{from: 'src/index.html', to: ''}])
+	]
 }

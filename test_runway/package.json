@@ -1,0 +1,31 @@
+{
+	"name": "test_runway",
+	"version": "0.1.0",
+	"description": "Test site to use and debug the Runway package\"",
+	"main": "index.js",
+	"scripts": {
+		"dev": "webpack-dev-server --watch --config webpack.config.js --content-base build/public/",
+		"build": "webpack -p --config webpack.config.js --output-path build/public/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rcieoktgieke/runway.git"
+	},
+	"author": "Eric Weber",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/rcieoktgieke/runway/issues"
+	},
+	"homepage": "https://github.com/rcieoktgieke/runway#readme",
+	"dependencies": {
+		"copy-webpack-plugin": "^4.5.1",
+		"babel-core": "^6.26.3",
+		"babel-loader": "^7.1.2",
+		"babel-preset-react": "^6.24.1",
+		"react": "^16.2.0",
+		"react-dom": "^16.2.0",
+		"react-router-dom": "^4.2.2",
+		"webpack": "^3.10.0",
+		"webpack-dev-server": "^2.11.0"
+	}
+}
