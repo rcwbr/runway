@@ -1,23 +1,36 @@
 {
-  "name": "runway",
-  "version": "1.0.0",
-  "description": "Build-time gallery image preprocessing for React-based websites",
-  "main": "build/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rcieoktgieke/runway.git"
-  },
-  "author": "Eric Weber",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/rcieoktgieke/runway/issues"
-  },
-  "homepage": "https://github.com/rcieoktgieke/runway#readme",
-  "dependencies": {
-    "deepmerge": "^2.1.1",
-    "sharp": "^0.20.4"
-  }
+	"name": "runway",
+	"version": "0.1.0",
+	"description": "Build-time gallery image preprocessing for React-based websites",
+	"main": "build/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "webpack --watch",
+		"build": "webpack"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rcieoktgieke/runway.git"
+	},
+	"author": "Eric Weber",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/rcieoktgieke/runway/issues"
+	},
+	"homepage": "https://github.com/rcieoktgieke/runway#readme",
+	"dependencies": {
+		"deepmerge": "^2.1.1",
+		"react": "^16.4.1",
+		"sharp": "^0.20.4",
+		"webpack": "^4.15.1"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.3",
+		"babel-loader": "^7.1.5",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-plugin-transform-react-jsx": "^6.24.1",
+		"babel-preset-env": "^1.7.0",
+		"webpack-cli": "^3.0.8"
+	}
 }
