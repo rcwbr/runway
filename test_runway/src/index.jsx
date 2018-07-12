@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route } from 'react-router-dom'
+import { Runway } from 'runway'
+import galleryConfig from './testGalleryConfig.js'
 
 class Site extends React.Component {
 	render () {
@@ -10,7 +12,9 @@ class Site extends React.Component {
 					exact path='/'
 					component={() => (
 						<div>
-							<h1>Test</h1>
+							<Runway config={galleryConfig}>
+								Test
+							</Runway>
 						</div>
 					)}
 				/>

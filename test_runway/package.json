@@ -4,8 +4,8 @@
 	"description": "Test site to use and debug the Runway package\"",
 	"main": "index.js",
 	"scripts": {
-		"dev": "webpack-dev-server --watch --config webpack.config.js --content-base build/public/",
-		"build": "webpack -p --config webpack.config.js --output-path build/public/"
+		"dev": "npm link runway && webpack-dev-server --watch --config webpack.config.js --content-base build/public/",
+		"build": "npm link runway && webpack -p --config webpack.config.js --output-path build/public/"
 	},
 	"repository": {
 		"type": "git",
