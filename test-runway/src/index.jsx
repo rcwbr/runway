@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route } from 'react-router-dom'
-import { Runway } from 'runway'
+import Runway from 'runway-react'
 import galleryConfig from './testGalleryConfig.js'
 
 class Site extends React.Component {

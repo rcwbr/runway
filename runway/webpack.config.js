@@ -1,28 +1,17 @@
 var path = require('path')
 
 module.exports = {
-	entry: './src/index.jsx',
+	entry: './src/buildRunway.js',
 	output: {
 		path: path.resolve(__dirname, 'build'),
 		filename: 'index.js',
 		libraryTarget: 'commonjs2'
 	},
-	module: {
-		rules: [
-			{
-				test: /\.jsx$/,
-				include: path.resolve(__dirname, 'src'),
-				exclude: /(node_modules|build)/,
-				use: {
-					loader: 'babel-loader',
-					options: {
-						presets: ['env']
-					}
-				}
-			}
-		]
+	resolve: {
+		modules: [path.resolve(__dirname, 'node_modules')]
 	},
+	target: 'node', // defaults to web; required for Webpack to resolve fs module
 	externals: {
-		'react': 'commonjs react'
+		'sharp': 'commonjs sharp' // external sharp so Webpack doesn't recompile it
 	}
 }

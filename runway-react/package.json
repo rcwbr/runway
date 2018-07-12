@@ -1,7 +1,7 @@
 {
-	"name": "runway",
+	"name": "runway-react",
 	"version": "0.1.0",
-	"description": "Build-time gallery image preprocessing for static websites",
+	"description": "React component for Runway statically-generated galleries",
 	"main": "build/index.js",
 	"scripts": {
 		"start": "npm link && webpack --watch",
@@ -18,10 +18,15 @@
 	},
 	"homepage": "https://github.com/rcieoktgieke/runway#readme",
 	"dependencies": {
-		"deepmerge": "^2.1.1",
-		"sharp": "^0.20.4"
+		"react": "^16.4.1"
 	},
 	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.3",
+		"babel-loader": "^7.1.5",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-plugin-transform-react-jsx": "^6.24.1",
+		"babel-preset-env": "^1.7.0",
 		"webpack": "^4.15.1",
 		"webpack-cli": "^3.0.8"
 	}

@@ -1,11 +1,11 @@
 {
-	"name": "test_runway",
+	"name": "test-runway",
 	"version": "0.1.0",
-	"description": "Test site to use and debug the Runway package\"",
+	"description": "Test site to use and debug the runway, runway-react, and runway-react-webpack-loader packages",
 	"main": "index.js",
 	"scripts": {
-		"dev": "npm link runway && webpack-dev-server --watch --config webpack.config.js --content-base build/public/",
-		"build": "npm link runway && webpack -p --config webpack.config.js --output-path build/public/"
+		"dev": "npm link runway-react && webpack-dev-server --watch --config webpack.config.js --content-base build/public/",
+		"build": "npm link runway-react && webpack -p --config webpack.config.js --output-path build/public/"
 	},
 	"repository": {
 		"type": "git",
@@ -17,7 +17,7 @@
 		"url": "https://github.com/rcieoktgieke/runway/issues"
 	},
 	"homepage": "https://github.com/rcieoktgieke/runway#readme",
-	"dependencies": {
+	"devDependencies": {
 		"copy-webpack-plugin": "^4.5.1",
 		"babel-core": "^6.26.3",
 		"babel-loader": "^7.1.2",
