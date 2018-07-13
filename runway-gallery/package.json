@@ -1,5 +1,5 @@
 {
-	"name": "runway",
+	"name": "runway-gallery",
 	"version": "0.1.0",
 	"description": "Build-time gallery image preprocessing for static websites",
 	"main": "build/index.js",
