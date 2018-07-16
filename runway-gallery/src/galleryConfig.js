@@ -1,4 +1,4 @@
-const deepmerge = require('deepmerge')
+import deepmerge from 'deepmerge'
 
 // default gallery config -- values will be overridden by gallery config file
 const defaults = {
@@ -14,7 +14,7 @@ const defaults = {
 	images: []
 }
 
-module.exports = (config) => {
+export default (config) => {
 	return deepmerge(
 		defaults,
 		config

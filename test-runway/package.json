@@ -1,7 +1,7 @@
 {
 	"name": "test-runway",
 	"version": "0.1.0",
-	"description": "Test site to use and debug the runway, runway-react, and runway-react-webpack-loader packages",
+	"description": "Test site to use and debug the runway-gallery, runway-react, and runway-webpack-loader packages",
 	"main": "index.js",
 	"scripts": {
 		"dev": "npm link runway-react && webpack-dev-server --watch --config webpack.config.js --content-base build/public/",

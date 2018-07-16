@@ -1,14 +1,20 @@
-const fs = require('fs')
-const sharp = require('sharp')
+import fs from 'fs'
+import sharp from 'sharp'
+import defaultConfig from './galleryConfig.js'
 
-module.exports = (runwayConf) => {
-
+function buildGallery (runwayConf, callback) {
 	// apply default config to gallery config
-	const galleryConfig = require('./galleryConfig.js')(runwayConf)
+	const galleryConfig = defaultConfig(runwayConf)
 
-	// prepare thumbs folder
+	// prepare images folder
 	try {
-		fs.mkdirSync(galleryConfig.thumbsFolder)
+		fs.mkdirSync(galleryConfig.imagesFolder)
+		// prepare thumbs folder
+		try {
+			fs.mkdirSync(galleryConfig.thumbsFolder)
+		} catch (err) {
+			if (err.code !== 'EEXIST') throw err
+		}
 	} catch (err) {
 		if (err.code !== 'EEXIST') throw err
 	}
@@ -87,6 +93,17 @@ module.exports = (runwayConf) => {
 					.resize(image.width, image.height)
 					.toFile(image.thumbPath)
 			})
+		})
+		delete galleryConfig.images
+		galleryConfig.gallery = gallery
+		callback(galleryConfig)
+	})
+}
+
+export default (runwayConf) => {
+	return new Promise(function (resolve, reject) {
+		buildGallery(runwayConf, (gallery) => {
+			resolve(gallery)
 		})
 	})
 }
