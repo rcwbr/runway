@@ -1,0 +1,29 @@
+{
+	"name": "runway-webpack-loader",
+	"version": "0.1.0",
+	"description": "React component for Runway statically-generated galleries -- devDependencies of deepmerge and sharp are temporary due to known NPM issue of resolving local module dependencies.",
+	"main": "build/index.js",
+	"scripts": {
+		"start": "npm link runway-gallery && npm link && webpack --watch",
+		"build": "npm install ../runway-gallery && webpack && npm link"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rcieoktgieke/runway.git"
+	},
+	"author": "Eric Weber",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/rcieoktgieke/runway/issues"
+	},
+	"homepage": "https://github.com/rcieoktgieke/runway#readme",
+	"dependencies": {
+		"runway-gallery": "file:../runway-gallery"
+	},
+	"devDependencies": {
+		"deepmerge": "^2.1.1",
+		"sharp": "^0.20.4",
+		"webpack": "^4.15.1",
+		"webpack-cli": "^3.0.8"
+	}
+}
