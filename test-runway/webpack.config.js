@@ -18,6 +18,13 @@ module.exports = {
 						presets: ['react']
 					}
 				}
+			},
+			{
+				test: /\.runwayconf.js?/,
+				include: path.resolve(__dirname, 'src'),
+				use: {
+					loader: 'runway-webpack-loader'
+				}
 			}
 		]
 	},

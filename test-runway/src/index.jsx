@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Runway from 'runway-react'
-import galleryConfig from './testGalleryConfig.js'
+import test from './testGallery.runwayconf.json'
 
 class Site extends React.Component {
 	render () {
@@ -12,7 +12,8 @@ class Site extends React.Component {
 					exact path='/'
 					component={() => (
 						<div>
-							<Runway config={galleryConfig}>
+							{JSON.stringify(test, null, 2)}
+							<Runway config={test}>
 								Test
 							</Runway>
 						</div>
