@@ -2,7 +2,7 @@ var path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-	entry: './src/index.jsx',
+	entry: './src/components/Index/index.jsx',
 	output: {
 		path: path.resolve(__dirname, 'build'),
 		filename: '[name].bundle.js'
