@@ -10,20 +10,13 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx?/,
+				test: /\.jsx?$/,
 				include: path.resolve(__dirname, 'src'),
 				use: {
 					loader: 'babel-loader',
 					options: {
 						presets: ['react']
 					}
-				}
-			},
-			{
-				test: /\.runwayconf.js?/,
-				include: path.resolve(__dirname, 'src'),
-				use: {
-					loader: 'runway-webpack-loader'
 				}
 			}
 		]
