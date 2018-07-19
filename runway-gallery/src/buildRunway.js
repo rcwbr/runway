@@ -2,19 +2,22 @@ import fs from 'fs'
 import sharp from 'sharp'
 import defaultConfig from './galleryConfig.js'
 
-function buildGallery (runwayConf, callback) {
+function buildGallery (runwayConf, context, callback) {
 	// apply default config to gallery config
-	const galleryConfig = defaultConfig(runwayConf)
+	var galleryConfig = defaultConfig(runwayConf)
+	context = (context !== '') ? context + '/' : context
+	galleryConfig.imagesFolder = context + galleryConfig.imagesFolder
+	galleryConfig.thumbsFolder = context + galleryConfig.thumbsFolder
 
 	// prepare images folder
 	try {
 		fs.mkdirSync(galleryConfig.imagesFolder)
-		// prepare thumbs folder
-		try {
-			fs.mkdirSync(galleryConfig.thumbsFolder)
-		} catch (err) {
-			if (err.code !== 'EEXIST') throw err
-		}
+	} catch (err) {
+		if (err.code !== 'EEXIST') throw err
+	}
+	// prepare thumbs folder
+	try {
+		fs.mkdirSync(galleryConfig.thumbsFolder)
 	} catch (err) {
 		if (err.code !== 'EEXIST') throw err
 	}
@@ -100,9 +103,9 @@ function buildGallery (runwayConf, callback) {
 	})
 }
 
-export default (runwayConf) => {
+export default (runwayConf, context = '') => {
 	return new Promise(function (resolve, reject) {
-		buildGallery(runwayConf, (gallery) => {
+		buildGallery(runwayConf, context, (gallery) => {
 			resolve(gallery)
 		})
 	})
