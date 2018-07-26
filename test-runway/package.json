@@ -30,7 +30,11 @@
 		"runway-gallery": "file:../runway-gallery",
 		"runway-webpack-loader": "file:../runway-webpack-loader",
 		"sharp": "^0.20.4",
+		"standard": "^11.0.0",
 		"webpack": "^3.10.0",
 		"webpack-dev-server": "^2.11.0"
+	},
+	"standard": {
+		"parser": "babel-eslint"
 	}
 }

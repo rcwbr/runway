@@ -24,6 +24,7 @@
 	"devDependencies": {
 		"deepmerge": "^2.1.1",
 		"sharp": "^0.20.4",
+		"standard": "^11.0.0",
 		"webpack": "^4.15.1",
 		"webpack-cli": "^3.0.8"
 	}
