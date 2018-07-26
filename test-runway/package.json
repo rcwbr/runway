@@ -1,7 +1,7 @@
 {
 	"name": "test-runway",
 	"version": "0.1.0",
-	"description": "Test site to use and debug the runway-gallery, runway-react, and runway-webpack-loader packages -- devDependencies of deepmerge and sharp are temporary due to known NPM issue of resolving local module dependencies.",
+	"description": "Test site to use and debug the runway-gallery, runway-react, and runway-webpack-loader packages -- devDependencies of deepmerge, file-loader, and sharp are temporary due to known NPM issue of resolving local module dependencies.",
 	"main": "index.js",
 	"scripts": {
 		"dev": "npm link runway-react && npm link runway-webpack-loader && webpack-dev-server --watch --config webpack.config.js --content-base build/public/",
@@ -18,11 +18,12 @@
 	},
 	"homepage": "https://github.com/rcieoktgieke/runway#readme",
 	"devDependencies": {
-		"copy-webpack-plugin": "^4.5.1",
 		"babel-core": "^6.26.3",
 		"babel-loader": "^7.1.2",
 		"babel-preset-react": "^6.24.1",
+		"copy-webpack-plugin": "^4.5.2",
 		"deepmerge": "^2.1.1",
+		"file-loader": "^1.1.11",
 		"react": "^16.2.0",
 		"react-dom": "^16.2.0",
 		"react-router-dom": "^4.2.2",

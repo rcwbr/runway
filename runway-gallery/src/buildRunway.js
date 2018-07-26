@@ -6,18 +6,18 @@ function buildGallery (runwayConf, context, callback) {
 	// apply default config to gallery config
 	var galleryConfig = defaultConfig(runwayConf)
 	context = (context !== '') ? context + '/' : context
-	galleryConfig.imagesFolder = context + galleryConfig.imagesFolder
-	galleryConfig.thumbsFolder = context + galleryConfig.thumbsFolder
+	galleryConfig.imagesFolderFullPath = context + galleryConfig.imagesFolder
+	galleryConfig.thumbsFolderFullPath = context + galleryConfig.thumbsFolder
 
 	// prepare images folder
 	try {
-		fs.mkdirSync(galleryConfig.imagesFolder)
+		fs.mkdirSync(galleryConfig.imagesFolderFullPath)
 	} catch (err) {
 		if (err.code !== 'EEXIST') throw err
 	}
 	// prepare thumbs folder
 	try {
-		fs.mkdirSync(galleryConfig.thumbsFolder)
+		fs.mkdirSync(galleryConfig.thumbsFolderFullPath)
 	} catch (err) {
 		if (err.code !== 'EEXIST') throw err
 	}
@@ -25,9 +25,9 @@ function buildGallery (runwayConf, context, callback) {
 	// read metadata from images
 	var metadataPromises = []
 	galleryConfig.images.forEach(image => {
-		image.sourcePath = galleryConfig.imagesFolder + '/' + image.filename
-		image.thumbPath = galleryConfig.thumbsFolder + '/' + image.filename
-		metadataPromises.push(sharp(image.sourcePath).metadata())
+		metadataPromises.push(sharp(
+			galleryConfig.imagesFolderFullPath + '/' + image.filename
+		).metadata())
 	})
 	// resolve metadata promises
 	Promise.all(metadataPromises).then(metadata => {
@@ -92,9 +92,9 @@ function buildGallery (runwayConf, context, callback) {
 				image.height = Math.floor(image.metadata.height * image.scaleFactor)
 
 				// resize image
-				sharp(image.sourcePath)
+				sharp(galleryConfig.imagesFolderFullPath + '/' + image.filename)
 					.resize(image.width, image.height)
-					.toFile(image.thumbPath)
+					.toFile(galleryConfig.thumbsFolderFullPath + '/' + image.filename)
 			})
 		})
 		delete galleryConfig.images

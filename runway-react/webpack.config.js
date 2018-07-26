@@ -10,16 +10,24 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx$/,
+				test: /\.jsx?$/,
 				include: path.resolve(__dirname, 'src'),
 				exclude: /(node_modules|build)/,
 				use: {
-					loader: 'babel-loader'
+					loader: 'babel-loader',
+					options: {
+						presets: ['es2015', 'react', 'env'],
+						plugins: [
+							'syntax-dynamic-import',
+							'transform-object-rest-spread',
+							'transform-react-jsx'
+						]
+					}
 				}
 			}
 		]
 	},
 	externals: {
-		'react': 'commonjs react'
+		react: 'commonjs react'
 	}
 }

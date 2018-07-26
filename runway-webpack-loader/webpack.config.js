@@ -12,6 +12,6 @@ module.exports = {
 	},
 	target: 'node', // defaults to web; required for Webpack to resolve fs module
 	externals: {
-		'sharp': 'commonjs sharp' // external sharp so Webpack doesn't recompile it
+		sharp: 'commonjs sharp' // external sharp so Webpack doesn't recompile it
 	}
 }

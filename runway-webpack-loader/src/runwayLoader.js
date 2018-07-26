@@ -1,4 +1,5 @@
 // import buildRunway from 'runway-gallery'
+// import path from 'path'
 var buildRunway = require('runway-gallery')
 var path = require('path')
 
@@ -11,6 +12,19 @@ module.exports = function(content) {
 	const context = path.relative(rootContext, this.context)
 	var webpackCallback = this.async()
 	buildRunway.default(galleryConfig, context).then(gallery => {
-		webpackCallback(null, 'module.exports = ' + JSON.stringify(gallery))
+		var runwayModule = ''
+		gallery.gallery.rows.forEach(row => {
+			row.images.forEach(image => {
+				runwayModule += 'require(\'file-loader?name=' + gallery.imagesFolder
+				runwayModule += '/[name].[ext]!./' + gallery.imagesFolder
+				runwayModule += '/' + image.filename + '\')\n'
+
+				runwayModule += 'require(\'file-loader?name=' + gallery.thumbsFolder
+				runwayModule += '/[name].[ext]!./' + gallery.thumbsFolder
+				runwayModule += '/' + image.filename + '\')\n'
+			})
+		})
+		runwayModule += 'module.exports = ' + JSON.stringify(gallery)
+		webpackCallback(null, runwayModule)
 	})
 }
