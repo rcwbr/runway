@@ -61,7 +61,7 @@ function buildGallery (runwayConf, context, callback) {
 			var marginWidth = (row.images.length - 1) * galleryConfig.imageMargins.horiz
 			if (
 				row.width + marginWidth >= galleryConfig.width
-				&& galleryConfig.images.length >= galleryConfig.imagesPerRow
+				&& row.images.length >= galleryConfig.imagesPerRow
 			) {
 				gallery.rows.push(row)
 				row = {
