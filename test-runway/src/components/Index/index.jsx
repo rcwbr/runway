@@ -12,10 +12,8 @@ class Site extends React.Component {
 					exact path='/'
 					component={() => (
 						<div>
-							{JSON.stringify(test, null, 2)}
-							<Runway config={test}>
-								Test
-							</Runway>
+							<Runway config={test} />
+							<pre>{JSON.stringify(test, null, 2)}</pre>
 						</div>
 					)}
 				/>
