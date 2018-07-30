@@ -10,9 +10,17 @@ export default class Gallery extends React.Component {
 		galleryConfig.width = this.props.config.width
 		galleryConfig.imagesPerRow = this.props.config.imagesPerRow
 		galleryConfig.imageMargins = this.props.config.imageMargins
-		const galleryRows = this.props.config.gallery.rows.map((row, index) =>
-			<GalleryRow key={index} row={row} galleryConfig={galleryConfig} />
-		)
+		const galleryRows = this.props.config.gallery.rows.map((row, index) => {
+			const last = (index === this.props.config.gallery.rows.length - 1)
+			return (
+				<GalleryRow
+					key = {index}
+					row = {row}
+					galleryConfig = {galleryConfig}
+					last = {last}
+				/>
+			)
+		})
 		return (
 			<div>
 				<p>This is a Runway gallery called {this.props.config.name}</p>

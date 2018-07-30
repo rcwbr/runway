@@ -7,7 +7,9 @@ export default class GalleryImage extends React.Component {
 		const thumbsFolder = this.props.galleryConfig.thumbsFolder
 		const src = thumbsFolder + '/' + this.props.image.filename
 		return (
-			<div style={styles.imageDiv}>
+			<div style={
+				styles.imageDiv(this.props.last, this.props.galleryConfig.imageMargins)
+			}>
 				<img src={src} />
 			</div>
 		)
