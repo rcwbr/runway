@@ -1,8 +1,39 @@
 import React from 'react'
 import GalleryRow from './components/GalleryRow/index.jsx'
+import Lightbox from 'react-images'
 
 export default class Gallery extends React.Component {
+	constructor (props) {
+		super(props)
+		this.state = {
+			overlay: {
+				open: false,
+				current: 0
+			}
+		}
+		this.overlayImage = this.overlayImage.bind(this)
+		this.overlayImageTemp = this.overlayImageTemp.bind(this)
+	}
+	overlayImageTemp (image) {
+		const index = 3
+		this.overlayImage(index)
+	}
+	overlayImage (image) {
+		this.setState({
+			overlay: {
+				open: true,
+				current: image
+			}
+		})
+	}
 	render () {
+		this.images = []
+		this.props.config.gallery.rows.forEach(row => {
+			row.images.forEach(image => {
+				image.src = this.props.config.imagesFolder + '/' + image.filename
+				this.images.push(image)
+			})
+		})
 		var galleryConfig = {}
 		galleryConfig.name = this.props.config.name
 		galleryConfig.imagesFolder = this.props.config.imagesFolder
@@ -17,6 +48,7 @@ export default class Gallery extends React.Component {
 					key = {index}
 					row = {row}
 					galleryConfig = {galleryConfig}
+					overlayImage = {this.overlayImageTemp}
 					last = {last}
 				/>
 			)
@@ -25,6 +57,25 @@ export default class Gallery extends React.Component {
 			<div>
 				<p>This is a Runway gallery called {this.props.config.name}</p>
 				{galleryRows}
+				<Lightbox
+					currentImage={this.state.overlay.current}
+					images={this.images}
+					isOpen={this.state.overlay.open}
+					onClickNext={
+						() => (this.overlayImage(this.state.overlay.current + 1)).bind(this)
+					}
+					onClickPrev={
+						() => (this.overlayImage(this.state.overlay.current - 1)).bind(this)
+					}
+					onClose={() => (
+						this.setState({
+							overlay: {
+								open: false
+							}
+						})
+					)}
+				/>
+				<pre>{JSON.stringify(this.images, null, 2)}</pre>
 				<p style={{clear: 'both'}}>Done with the Runway gallery</p>
 			</div>
 		)

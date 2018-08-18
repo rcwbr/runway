@@ -1,6 +1,7 @@
 const imageDiv = (last, imageMargins) => {
 	const allImageDivs = {
-		float: 'left'
+		float: 'left',
+		cursor: 'pointer'
 	}
 	const imageDivsExceptLast = {
 		marginRight: imageMargins.horiz + 'px'

@@ -12,6 +12,7 @@ export default class GalleryRow extends React.Component {
 					key = {index}
 					image = {image}
 					galleryConfig = {galleryConfig}
+					overlayImage = {this.props.overlayImage}
 					last = {last}
 				/>
 			)
