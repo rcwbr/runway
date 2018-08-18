@@ -21,7 +21,7 @@
 		"react": "^16.4.1",
 		"react-dom": "^16.4.2",
 		"react-image-placeholder": "file:../../../react-image-placeholder",
-		"react-images": "^0.5.19"
+		"react-images": "file:../../../react-images/react-images/"
 	},
 	"devDependencies": {
 		"babel-cli": "^6.26.0",
