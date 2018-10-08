@@ -1,4 +1,4 @@
-// import buildRunway from 'runway-gallery'
+// import buildRunway from 'runway-gallery' TODO: update runway-gallery README to use import
 // import path from 'path'
 var buildRunway = require('runway-gallery')
 var path = require('path')

@@ -1,5 +1,4 @@
 import React from 'react'
-import ImagePlaceholder from 'react-image-placeholder'
 import styles from './styles.js'
 
 export default class GalleryImage extends React.Component {
@@ -8,13 +7,7 @@ export default class GalleryImage extends React.Component {
 		const thumbsFolder = this.props.galleryConfig.thumbsFolder
 		const src = thumbsFolder + '/' + this.props.image.filename
 
-		const imgPlaceholder = <ImagePlaceholder
-			metadata = {{
-				src: src,
-				width: this.props.image.width,
-				height: this.props.image.height
-			}}
-		/>
+		const ImagePlaceholderType = this.props.imageComponentType
 		return (
 			<div
 				style = { styles.imageDiv(
@@ -22,10 +15,18 @@ export default class GalleryImage extends React.Component {
 					this.props.galleryConfig.imageMargins
 				)}
 				onClick = {
-					() => this.props.overlayImage(imgPlaceholder)
+					() => this.props.overlayImage(3)
 				}
 			>
-				{imgPlaceholder}
+				<ImagePlaceholderType
+					metadata={{
+						src: src,
+						width: this.props.image.width,
+						height: this.props.image.height
+					}}
+					width={`${this.props.image.width}px`}
+					height={`${this.props.image.height}px`}
+				/>
 			</div>
 		)
 	}
