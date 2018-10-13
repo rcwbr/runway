@@ -5,7 +5,8 @@ export default class GalleryImage extends React.Component {
 	render () {
 		const imagesFolder = this.props.galleryConfig.imagesFolder
 		const thumbsFolder = this.props.galleryConfig.thumbsFolder
-		const src = thumbsFolder + '/' + this.props.image.filename
+		const imageSrc = imagesFolder + '/' + this.props.image.filename
+		const thumbSrc = thumbsFolder + '/' + this.props.image.filename
 
 		const ImagePlaceholderType = this.props.imageComponentType
 		return (
@@ -15,12 +16,12 @@ export default class GalleryImage extends React.Component {
 					this.props.galleryConfig.imageMargins
 				)}
 				onClick = {
-					() => this.props.overlayImage(3)
+					() => this.props.overlayImage(imageSrc)
 				}
 			>
 				<ImagePlaceholderType
 					metadata={{
-						src: src,
+						src: thumbSrc,
 						width: this.props.image.width,
 						height: this.props.image.height
 					}}

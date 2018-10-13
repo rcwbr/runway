@@ -13,20 +13,17 @@ export default class Gallery extends React.Component {
 			}
 		}
 		this.overlayImage = this.overlayImage.bind(this)
-		this.overlayImageTemp = this.overlayImageTemp.bind(this)
-	}
-	overlayImageTemp (image) { // TODO open lightbox to correct image
-		this.setState({
-			imageModule: image
-		})
-		const index = 3
-		this.overlayImage(index)
+		this.overlayImageIndex = this.overlayImageIndex.bind(this)
 	}
 	overlayImage (image) {
+		const index = this.imageIndices[image]
+		this.overlayImageIndex(index)
+	}
+	overlayImageIndex (index) {
 		this.setState({
 			overlay: {
 				open: true,
-				current: image
+				current: index
 			}
 		})
 	}
@@ -49,12 +46,15 @@ export default class Gallery extends React.Component {
 		var lightboxConfig = {...lightboxConfigDefaults, ...this.props.lightboxConfig}
 
 		// generate image components for lightbox
+		this.imageIndices = {}
+		var currentImageIndex = 0
 		lightboxConfig.images = []
 		this.props.config.gallery.rows.forEach(row => {
 			row.images.forEach(image => {
+				const imageFile = this.props.config.imagesFolder + '/' + image.filename
 				image.component = <LightboxImageType
 					metadata={{
-						src: this.props.config.imagesFolder + '/' + image.filename,
+						src: imageFile,
 						width: image.metadata.width,
 						height: image.metadata.height
 					}}
@@ -62,6 +62,8 @@ export default class Gallery extends React.Component {
 					maxWidth={lightboxConfig.width}
 				/>
 				lightboxConfig.images.push(image)
+				this.imageIndices[imageFile] = currentImageIndex
+				currentImageIndex ++
 			})
 		})
 
@@ -69,10 +71,10 @@ export default class Gallery extends React.Component {
 		lightboxConfig.currentImage = this.state.overlay.current
 		lightboxConfig.isOpen = this.state.overlay.open
 		lightboxConfig.onClickNext = () => (
-			this.overlayImage(this.state.overlay.current + 1)
+			this.overlayImageIndex(this.state.overlay.current + 1)
 		).bind(this)
 		lightboxConfig.onClickPrev = () => (
-			this.overlayImage(this.state.overlay.current - 1)
+			this.overlayImageIndex(this.state.overlay.current - 1)
 		).bind(this)
 		lightboxConfig.onClose = () => (
 			this.setState({
@@ -98,7 +100,7 @@ export default class Gallery extends React.Component {
 					key = {index}
 					row = {row}
 					galleryConfig = {galleryConfig}
-					overlayImage = {this.overlayImageTemp}
+					overlayImage = {this.overlayImage}
 					imageComponentType = {ThumbImageType}
 					last = {last}
 				/>
