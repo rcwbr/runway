@@ -12,8 +12,8 @@ export default class GalleryRow extends React.Component {
 					key = {index}
 					image = {image}
 					galleryConfig = {galleryConfig}
-					overlayImage = {this.props.overlayImage}
-					imageComponentType = {this.props.imageComponentType}
+					openOverlay = {this.props.openOverlay}
+					imageComponent = {this.props.imageComponent}
 					last = {last}
 				/>
 			)

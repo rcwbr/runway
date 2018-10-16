@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Runway from 'runway-react'
 import runwayConfig from 'runway-webpack-loader!./testGallery.runwayconf.json'
+import { Placeholder, LoadableImage } from 'react-image-placeholder'
 
 class Site extends React.Component {
 	render () {

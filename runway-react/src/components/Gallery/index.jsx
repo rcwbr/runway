@@ -1,5 +1,5 @@
 import React from 'react'
-import { ImagePlaceholder, ScaledImagePlaceholder } from 'react-image-placeholder'
+import { ScaledImagePlaceholder } from 'react-image-placeholder'
 import GalleryRow from './components/GalleryRow/index.jsx'
 import Lightbox from 'react-images'
 
@@ -12,14 +12,14 @@ export default class Gallery extends React.Component {
 				current: 0
 			}
 		}
-		this.overlayImage = this.overlayImage.bind(this)
-		this.overlayImageIndex = this.overlayImageIndex.bind(this)
+		this.openOverlay = this.openOverlay.bind(this)
+		this.openOverlayIndex = this.openOverlayIndex.bind(this)
 	}
-	overlayImage (image) {
+	openOverlay (image) {
 		const index = this.imageIndices[image]
-		this.overlayImageIndex(index)
+		this.openOverlayIndex(index)
 	}
-	overlayImageIndex (index) {
+	openOverlayIndex (index) {
 		this.setState({
 			overlay: {
 				open: true,
@@ -29,9 +29,7 @@ export default class Gallery extends React.Component {
 	}
 	render () {
 		// set default image components
-		const ThumbImageType = this.props.thumbImageType ?
-			this.props.thumbImageType
-			: ImagePlaceholder
+		// TODO: update documentation for thumbImage prop
 		const LightboxImageType = this.props.lightboxImageType ?
 			this.props.lightboxImageType
 			: ScaledImagePlaceholder
@@ -71,10 +69,10 @@ export default class Gallery extends React.Component {
 		lightboxConfig.currentImage = this.state.overlay.current
 		lightboxConfig.isOpen = this.state.overlay.open
 		lightboxConfig.onClickNext = () => (
-			this.overlayImageIndex(this.state.overlay.current + 1)
+			this.openOverlayIndex(this.state.overlay.current + 1)
 		).bind(this)
 		lightboxConfig.onClickPrev = () => (
-			this.overlayImageIndex(this.state.overlay.current - 1)
+			this.openOverlayIndex(this.state.overlay.current - 1)
 		).bind(this)
 		lightboxConfig.onClose = () => (
 			this.setState({
@@ -100,8 +98,8 @@ export default class Gallery extends React.Component {
 					key = {index}
 					row = {row}
 					galleryConfig = {galleryConfig}
-					overlayImage = {this.overlayImage}
-					imageComponentType = {ThumbImageType}
+					openOverlay = {this.openOverlay}
+					imageComponent = {this.props.thumbImage}
 					last = {last}
 				/>
 			)
