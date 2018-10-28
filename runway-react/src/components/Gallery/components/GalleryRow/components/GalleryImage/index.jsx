@@ -10,14 +10,14 @@ export default class GalleryImage extends React.Component {
 		const imageSrc = imagesFolder + '/' + this.props.image.filename
 		const thumbSrc = thumbsFolder + '/' + this.props.image.filename
 
-		const imageComponent = deepmerge(
+		const imageComponentConfig = deepmerge(
 			{
 				type: Placeholder,
 				props: {
 					placeholderType: Placeholder,
 					placeholderProps: {
-						moduleType: LoadableImage,
-						moduleProps: {
+						componentType: LoadableImage,
+						componentProps: {
 							imageProps: {
 								src: thumbSrc,
 								width: `${this.props.image.width}px`,
@@ -25,8 +25,8 @@ export default class GalleryImage extends React.Component {
 							}
 						}
 					},
-					moduleType: LoadableImage,
-					moduleProps: {
+					componentType: LoadableImage,
+					componentProps: {
 						imageProps: {
 							src: imageSrc,
 							width: this.props.image.width,
@@ -37,9 +37,9 @@ export default class GalleryImage extends React.Component {
 					height: `${this.props.image.height}px`
 				}
 			},
-			this.props.imageComponent ? this.props.imageComponent : {}
+			this.props.imageComponentConfig ? this.props.imageComponentConfig : {}
 		)
-		const ImageComponentType = imageComponent.type
+		const ImageComponentType = imageComponentConfig.type
 
 		return (
 			<div
@@ -52,7 +52,7 @@ export default class GalleryImage extends React.Component {
 				}
 			>
 				<ImageComponentType
-					{...imageComponent.props}
+					{...imageComponentConfig.props}
 				/>
 			</div>
 		)

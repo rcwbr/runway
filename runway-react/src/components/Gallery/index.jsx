@@ -1,5 +1,6 @@
 import React from 'react'
-import { ScaledImagePlaceholder } from 'react-image-placeholder'
+import deepmerge from 'deepmerge'
+import { LoadableImage, Placeholder, ScaledComponent } from 'react-image-placeholder'
 import GalleryRow from './components/GalleryRow/index.jsx'
 import Lightbox from 'react-images'
 
@@ -12,6 +13,21 @@ export default class Gallery extends React.Component {
 				current: 0
 			}
 		}
+
+		this.lightboxImageConfigDefaults = {
+			type: ScaledComponent,
+			props: {
+				componentType: Placeholder,
+				componentProps: {
+					placeholderType: Placeholder,
+					placeholderProps: {
+						componentType: LoadableImage
+					},
+					componentType: LoadableImage
+				}
+			}
+		}
+
 		this.openOverlay = this.openOverlay.bind(this)
 		this.openOverlayIndex = this.openOverlayIndex.bind(this)
 	}
@@ -29,10 +45,13 @@ export default class Gallery extends React.Component {
 	}
 	render () {
 		// set default image components
-		// TODO: update documentation for thumbImage prop
-		const LightboxImageType = this.props.lightboxImageType ?
-			this.props.lightboxImageType
-			: ScaledImagePlaceholder
+		// TODO: update documentation for thumbImageConfig prop -- remove thumbImageType
+		// TODO: update documentation for lightboxImageConfig prop -- remove lightboxImageType
+		const lightboxImageConfig = deepmerge(
+			this.lightboxImageConfigDefaults,
+			this.props.lightboxImageConfig ? this.props.lightboxImageConfig : {}
+		)
+		const LightboxImageType = lightboxImageConfig.type
 
 		// lightbox config input
 		var lightboxConfigDefaults = {
@@ -44,22 +63,49 @@ export default class Gallery extends React.Component {
 		var lightboxConfig = {...lightboxConfigDefaults, ...this.props.lightboxConfig}
 
 		// generate image components for lightbox
+		lightboxConfig.images = []
+		// and map from image filenames to their indices in the image list
 		this.imageIndices = {}
 		var currentImageIndex = 0
-		lightboxConfig.images = []
 		this.props.config.gallery.rows.forEach(row => {
 			row.images.forEach(image => {
+				const thumbFile = this.props.config.thumbsFolder + '/' + image.filename
 				const imageFile = this.props.config.imagesFolder + '/' + image.filename
-				image.component = <LightboxImageType
-					metadata={{
-						src: imageFile,
+
+				var lightboxImageProps = deepmerge(
+					{
+						componentProps: {
+							placeholderProps: {
+								componentProps: {
+									imageProps: {
+										src: thumbFile,
+										width: '100%',
+										height: '100%'
+									}
+								}
+							},
+							componentProps: {
+								imageProps: {
+									src: imageFile,
+									width: '100%',
+									height: '100%'
+								}
+							}
+						},
 						width: image.metadata.width,
-						height: image.metadata.height
-					}}
-					maxHeight={`calc(${lightboxConfig.height} - ${lightboxConfig.heightOffset}px)`}
-					maxWidth={lightboxConfig.width}
+						height: image.metadata.height,
+						maxWidth: lightboxConfig.width,
+						maxHeight: `calc(${lightboxConfig.height} - ${lightboxConfig.heightOffset}px)`
+					},
+					lightboxImageConfig.props
+				)
+
+				const imageComponent = <LightboxImageType
+					{...lightboxImageProps}
 				/>
+				image.component = imageComponent
 				lightboxConfig.images.push(image)
+
 				this.imageIndices[imageFile] = currentImageIndex
 				currentImageIndex ++
 			})
@@ -99,7 +145,7 @@ export default class Gallery extends React.Component {
 					row = {row}
 					galleryConfig = {galleryConfig}
 					openOverlay = {this.openOverlay}
-					imageComponent = {this.props.thumbImage}
+					imageComponentConfig = {this.props.thumbImageConfig}
 					last = {last}
 				/>
 			)
