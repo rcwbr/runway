@@ -103,8 +103,11 @@ export default class Gallery extends React.Component {
 				const imageComponent = <LightboxImageType
 					{...lightboxImageProps}
 				/>
-				image.component = imageComponent
-				lightboxConfig.images.push(image)
+				const lightboxImage = {
+					component: imageComponent,
+					src: imageFile
+				}
+				lightboxConfig.images.push(lightboxImage)
 
 				this.imageIndices[imageFile] = currentImageIndex
 				currentImageIndex ++
@@ -116,10 +119,10 @@ export default class Gallery extends React.Component {
 		lightboxConfig.isOpen = this.state.overlay.open
 		lightboxConfig.onClickNext = () => (
 			this.openOverlayIndex(this.state.overlay.current + 1)
-		).bind(this)
+		)
 		lightboxConfig.onClickPrev = () => (
 			this.openOverlayIndex(this.state.overlay.current - 1)
-		).bind(this)
+		)
 		lightboxConfig.onClose = () => (
 			this.setState({
 				overlay: {
