@@ -1,11 +1,11 @@
 {
 	"name": "runway-react",
 	"version": "0.1.0",
-	"description": "React component for Runway statically-generated galleries",
+	"description": "React component for Runway statically-generated galleries. TODO: change file: dependencies to regular dependencies.",
 	"main": "build/index.js",
 	"scripts": {
-		"start": "npm link && webpack --watch",
-		"build": "webpack && npm link"
+		"start": "npm link react-image-placeholder && npm link react-images && npm link && webpack --watch",
+		"build": "npm link react-image-placeholder && npm link react-images && webpack && npm link"
 	},
 	"repository": {
 		"type": "git",
@@ -18,15 +18,19 @@
 	},
 	"homepage": "https://github.com/rcieoktgieke/runway#readme",
 	"dependencies": {
-		"react": "^16.4.1"
+		"deepmerge": "^2.1.1",
+		"react": "^16.4.1",
+		"react-dom": "^16.4.2",
+		"react-image-placeholder": "file:../../../react-image-placeholder",
+		"react-images": "file:../../../react-images/react-images/"
 	},
 	"devDependencies": {
 		"babel-cli": "^6.26.0",
 		"babel-core": "^6.26.3",
 		"babel-loader": "^7.1.5",
+		"babel-plugin-syntax-dynamic-import": "^6.18.0",
 		"babel-plugin-transform-object-rest-spread": "^6.26.0",
 		"babel-plugin-transform-react-jsx": "^6.24.1",
-		"babel-plugin-syntax-dynamic-import": "^6.18.0",
 		"babel-preset-env": "^1.7.0",
 		"babel-preset-es2015": "^6.24.1",
 		"babel-preset-react": "^6.24.1",
