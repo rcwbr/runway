@@ -1,6 +1,6 @@
 import React from 'react'
 import deepmerge from 'deepmerge'
-import { Placeholder, LoadableImage } from 'react-module-placeholder'
+import { Placeholder, LoadableImage } from 'react-element-placeholder'
 import styles from './styles.js'
 
 export default class GalleryImage extends React.Component {

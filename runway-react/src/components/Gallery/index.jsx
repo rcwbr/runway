@@ -1,6 +1,6 @@
 import React from 'react'
 import deepmerge from 'deepmerge'
-import { LoadableImage, Placeholder, ScaledComponent } from 'react-module-placeholder'
+import { LoadableImage, Placeholder, ScaledComponent } from 'react-element-placeholder'
 import GalleryRow from './components/GalleryRow/index.jsx'
 import Lightbox from 'react-images'
 
