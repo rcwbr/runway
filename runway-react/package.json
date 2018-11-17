@@ -4,8 +4,8 @@
 	"description": "React component for Runway statically-generated galleries. TODO: change file: dependencies to regular dependencies.",
 	"main": "build/index.js",
 	"scripts": {
-		"start": "npm link react-image-placeholder && npm link react-images && npm link && webpack --watch",
-		"build": "npm link react-image-placeholder && npm link react-images && webpack && npm link"
+		"start": "npm link react-module-placeholder && npm link react-images && npm link && webpack --watch",
+		"build": "npm link react-module-placeholder && npm link react-images && webpack && npm link"
 	},
 	"repository": {
 		"type": "git",
@@ -21,7 +21,7 @@
 		"deepmerge": "^2.1.1",
 		"react": "^16.4.1",
 		"react-dom": "^16.4.2",
-		"react-image-placeholder": "file:../../../react-image-placeholder",
+		"react-module-placeholder": "file:../../../react-module-placeholder",
 		"react-images": "file:../../../react-images/react-images/"
 	},
 	"devDependencies": {

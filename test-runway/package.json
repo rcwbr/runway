@@ -4,8 +4,8 @@
 	"description": "Test site to use and debug the runway-gallery, runway-react, and runway-webpack-loader packages -- devDependencies of deepmerge, file-loader, and sharp are temporary due to known NPM issue of resolving local module dependencies. TODO: change file: dependencies to regular dependencies.",
 	"main": "index.js",
 	"scripts": {
-		"dev": "npm link react-image-placeholder && npm link runway-react && npm link runway-webpack-loader && webpack-dev-server --watch --config webpack.config.js --content-base build/public/",
-		"build": "npm link react-image-placeholder && npm link runway-react && npm link runway-webpack-loader && webpack -p --config webpack.config.js --output-path build/public/"
+		"dev": "npm link react-module-placeholder && npm link runway-react && npm link runway-webpack-loader && webpack-dev-server --watch --config webpack.config.js --content-base build/public/",
+		"build": "npm link react-module-placeholder && npm link runway-react && npm link runway-webpack-loader && webpack -p --config webpack.config.js --output-path build/public/"
 	},
 	"repository": {
 		"type": "git",
@@ -27,7 +27,7 @@
 		"file-loader": "^1.1.11",
 		"react": "^16.2.0",
 		"react-dom": "^16.2.0",
-		"react-image-placeholder": "file:../../../react-image-placeholder",
+		"react-module-placeholder": "file:../../../react-module-placeholder",
 		"react-router-dom": "^4.2.2",
 		"runway-gallery": "file:../runway-gallery",
 		"runway-webpack-loader": "file:../runway-webpack-loader",

@@ -129,4 +129,4 @@ The `Gallery` React component is self-contained within a div with an explicit pi
 
 ## Implementation details
 
-The image [lightbox](https://github.com/rcieoktgieke/react-images) is part of a very lightly modified version of [jossmac's react-images](https://github.com/jossmac/react-images). The only change is the addition of an optional `component` field of each obect in the Lightbox component's `images` array, which, if present, is rendered in place of the default `<img>` component in the lightbox. This allows the [`react-image-placeholder`](https://todo) to be rendered in the lightbox while the image files load.
+The image [lightbox](https://github.com/rcieoktgieke/react-images) is part of a very lightly modified version of [jossmac's react-images](https://github.com/jossmac/react-images). The only change is the addition of an optional `component` field of each obect in the Lightbox component's `images` array, which, if present, is rendered in place of the default `<img>` component in the lightbox. This allows the [`react-module-placeholder`](https://todo) to be rendered in the lightbox while the image files load.
