@@ -1,5 +1,5 @@
 # Runway-React
-The `runway-react` package defines a `Gallery` component, which renders a thumbnail gallery and [Lightbox](https://github.com/rcieoktgieke/react-images) viewer to display images processed by the `runway-gallery` tool.
+The `runway-react` package defines a `Gallery` component, which renders a thumbnail gallery and [Lightbox](https://github.com/rcwbr/react-images) viewer to display images processed by the `runway-gallery` tool.
 
 ## Usage
 Example usage of the `runway-react Gallery` component can be found in the [test-runway](../test-runway/README.md) package.
@@ -68,7 +68,7 @@ maxWidth | string | (`lightboxImageComponent` only) Width integer with CSS units
 maxHeight | string | (`lightboxImageComponent` only) Height integer with CSS units to which the image should scale down to fit within. The rendered image's height may be smaller if the scale factor to keep its width within the `maxWidth` parameter requires it.
 
 #### Lightbox configuration
-If using the lightbox with a `runway-react` component (i.e. with the `lightbox` property set to true), a configuration object will be passed through to the lightbox component. Documentation of this configuration can be found in the [`react-images` package](https://github.com/rcieoktgieke/react-images). Some fields mentioned there cannot be set as props from the `runway-react` component because it sets them internally. These fields are `onClose`, `images`, `isOpen`, `onClickNext`, `onClickPrev` and `onClose`.
+If using the lightbox with a `runway-react` component (i.e. with the `lightbox` property set to true), a configuration object will be passed through to the lightbox component. Documentation of this configuration can be found in the [`react-images` package](https://github.com/rcwbr/react-images). Some fields mentioned there cannot be set as props from the `runway-react` component because it sets them internally. These fields are `onClose`, `images`, `isOpen`, `onClickNext`, `onClickPrev` and `onClose`.
 ```JavaScript
 import Runway from 'runway-react'
 <Runway
@@ -129,4 +129,4 @@ The `Gallery` React component is self-contained within a div with an explicit pi
 
 ## Implementation details
 
-The image [lightbox](https://github.com/rcieoktgieke/react-images) is part of a very lightly modified version of [jossmac's react-images](https://github.com/jossmac/react-images). The only change is the addition of an optional `component` field of each obect in the Lightbox component's `images` array, which, if present, is rendered in place of the default `<img>` component in the lightbox. This allows the [`react-element-placeholder`](https://todo) to be rendered in the lightbox while the image files load.
+The image [lightbox](https://github.com/rcwbr/react-images) is part of a very lightly modified version of [jossmac's react-images](https://github.com/jossmac/react-images). The only change is the addition of an optional `component` field of each obect in the Lightbox component's `images` array, which, if present, is rendered in place of the default `<img>` component in the lightbox. This allows the [`react-element-placeholder`](https://todo) to be rendered in the lightbox while the image files load.

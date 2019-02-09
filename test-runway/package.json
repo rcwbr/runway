@@ -9,14 +9,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/rcieoktgieke/runway.git"
+		"url": "git+https://github.com/rcwbr/runway.git"
 	},
 	"author": "Eric Weber",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/rcieoktgieke/runway/issues"
+		"url": "https://github.com/rcwbr/runway/issues"
 	},
-	"homepage": "https://github.com/rcieoktgieke/runway#readme",
+	"homepage": "https://github.com/rcwbr/runway#readme",
 	"devDependencies": {
 		"babel-core": "^6.26.3",
 		"babel-loader": "^7.1.2",
