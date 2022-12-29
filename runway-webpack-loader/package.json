@@ -18,14 +18,14 @@
 	},
 	"homepage": "https://github.com/rcwbr/runway#readme",
 	"dependencies": {
-		"file-loader": "^1.1.11",
+		"file-loader": "^6.2.0",
 		"runway-gallery": "file:../runway-gallery"
 	},
 	"devDependencies": {
 		"deepmerge": "^2.1.1",
 		"sharp": "^0.20.4",
 		"standard": "^11.0.0",
-		"webpack": "^4.15.1",
-		"webpack-cli": "^3.0.8"
+		"webpack": "^5.75.0",
+		"webpack-cli": "^5.0.1"
 	}
 }
